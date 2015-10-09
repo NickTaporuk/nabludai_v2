@@ -1,7 +1,7 @@
 /**
  * Created by nkuropatkin on 09.10.15.
  */
-console.log('init app.js');
+//console.log('init app.js');
 
 require.config({
     // пары "ключ-значение" вашего приложения
@@ -26,6 +26,17 @@ require.config({
     }
 });
 
-require( ['underscore'], function(_) {
-// ваш код
+define(['underscore', 'backbone','jquery'], function(_, Backbone,$) {
+    var myModel = Backbone.Model.extend({
+        // Атрибуты по умолчанию
+        defaults: {content: 'hello world'},
+        // пустой метод инициализации
+        initialize: function() {},
+        clear: function() {
+            this.destroy();
+            this.view.remove();
+        }
+    });
+    //console.log('myModel:',myModel);
+    return myModel;
 });
