@@ -9,9 +9,9 @@ require.config({
     // Обычно тот же каталог, в котором находится сценарий верхнего уровня,
     // указанный в атрибуте data-main
     paths: {
-        'underscore'    : '../bower_components/underscore/underscore-min.js',
-        'backbone'      : '../bower_components/backbone/backbone',
-        'jquery'      : '../bower_components/jquery/dist/jquery.min.js'
+        'underscore'    : 'bower_components/underscore/underscore-min',
+        'backbone'      : 'bower_components/backbone/backbone',
+        'jquery'        : 'bower_components/jquery/dist/jquery.min'
     },
     // set up custom paths to libraries, or paths to RequireJS plug-ins
     // используется для настройки адаптеров
@@ -24,4 +24,8 @@ require.config({
             exports: 'Backbone'
         }
     }
+});
+
+require( ['underscore'], function(_) {
+// ваш код
 });

@@ -1,0 +1,11 @@
+{
+    "name": "distrib-jquery-mobile",
+    "version": "1.3.2",
+    "dependencies": {
+        "jquery": "~1.9.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/henrytrager/distrib-jquery-mobile.git"
+    }
+}
