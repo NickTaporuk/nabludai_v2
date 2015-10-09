@@ -1,0 +1,9 @@
+{
+  "name": "Getiss",
+  "version": "2.0.0",
+  "dependencies": {
+    "backbone": "*",
+    "lodash"  : "1.5.3",
+    "jquery"  : "*"
+  }
+}
