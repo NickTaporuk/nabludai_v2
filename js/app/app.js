@@ -27,16 +27,14 @@ require.config({
 });
 
 define(['underscore', 'backbone','jquery'], function(_, Backbone,$) {
-    var myModel = Backbone.Model.extend({
-        // Атрибуты по умолчанию
-        defaults: {content: 'hello world'},
-        // пустой метод инициализации
-        initialize: function() {},
-        clear: function() {
-            this.destroy();
-            this.view.remove();
+    var ItemView = Backbone.View.extend({
+        tagName: "div",
+        className: "item-wrap",
+        template: _.template($("#itemTemplate").html()),
+        render: function() {
+            this.$el.html(this.template(this.model.toJSON()));
+            return this;
         }
     });
-    //console.log('myModel:',myModel);
-    return myModel;
+    return ItemView;
 });
