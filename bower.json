@@ -1,9 +1,23 @@
 {
   "name": "Getiss",
-  "version": "2.0.0",
+  "version": "1.0.0",
+  "homepage": "https://github.com/NickTaporuk/nabludai_v2",
+  "authors": [
+    "Nickolay Kuropatkin <nictaporuk@yandex.ru>"
+  ],
+  "description": "Getiss version 2",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "backbone": "*",
-    "lodash"  : "1.5.3",
-    "jquery"  : "*"
+    "backbone": "~1.2.3",
+    "lodash": "~3.10.1"
   }
 }
