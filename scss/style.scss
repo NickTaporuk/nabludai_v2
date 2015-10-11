@@ -1,0 +1,12 @@
+$blue: #2822be ;
+$margin: 16px ;
+
+@import "includes/reset";
+@import "includes/home";
+@import "includes/settings";
+
+
+.content-navigation {
+  border-color: $blue;
+  color:darken($blue,9%);
+}

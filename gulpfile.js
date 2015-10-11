@@ -1,12 +1,16 @@
-var gulp = require('gulp');
-var concatCss = require('gulp-concat-css');
-var minifyCss = require('gulp-minify-css');
-var rename = require("gulp-rename");
-var notify = require("gulp-notify");
-var through = require('gulp-through');
+'use strict';
+
+var gulp        = require('gulp');
+var concatCss   = require('gulp-concat-css');
+var minifyCss   = require('gulp-minify-css');
+var rename      = require("gulp-rename");
+var notify      = require("gulp-notify");
+var through     = require('gulp-through');
+var sass        = require('gulp-sass');
+
 gulp.task('minify-css', function () {
-    return gulp.src('css/*.css')
-        .pipe(concatCss("bundle.css"))
+    return gulp.src('scss/style.scss')
+        .pipe(sass())
         .pipe(minifyCss({compatibility: 'ie8'}))
         .pipe(rename("bundle.min.css"))
         .pipe(notify({
@@ -16,12 +20,15 @@ gulp.task('minify-css', function () {
             }
         }
         ))
-        .pipe(gulp.dest('cdn/'))
-        .pipe(through(function () {
-            this.emit("error", new Error("Something happend: Error message!"))
-        }))
-        .on("error", notify.onError({
-            message: "Error: <%= error.message %>",
-            title: "Error running something"
-        }));
+        .pipe(gulp.dest('cdn/'));
+});
+
+gulp.task('sass', function () {
+    gulp.src('./sass/**/*.scss')
+        .pipe(sass.sync().on('error', sass.logError))
+        .pipe(gulp.dest('./css'));
+});
+
+gulp.task('sass:watch', function () {
+    gulp.watch('./sass/**/*.scss', ['sass']);
 });
