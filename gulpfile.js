@@ -7,6 +7,8 @@ var rename      = require("gulp-rename");
 var notify      = require("gulp-notify");
 var through     = require('gulp-through');
 var sass        = require('gulp-sass');
+var uncss       = require('gulp-uncss');
+var autoprefixer= require('gulp-autoprefixer');
 
 gulp.task('minify-css', function () {
     return gulp.src('scss/style.scss')
@@ -23,12 +25,19 @@ gulp.task('minify-css', function () {
         .pipe(gulp.dest('cdn/'));
 });
 
-gulp.task('sass', function () {
-    gulp.src('./sass/**/*.scss')
-        .pipe(sass.sync().on('error', sass.logError))
-        .pipe(gulp.dest('./css'));
-});
-
-gulp.task('sass:watch', function () {
-    gulp.watch('./sass/**/*.scss', ['sass']);
+// delete not used css classes , ids, tags
+gulp.task('uncss', function () {
+    return gulp.src('cdn/bundle.min.css')
+        .pipe(uncss({
+            //html: ['index.html', 'posts/**/*.html', 'http://example.com']
+            html: ['index.html']
+        }))
+        .pipe(notify({
+                message: "Delete not used css classes , ids, tagse: <%= file.relative %> @ <%= options.date %>",
+                templateOptions: {
+                    date: new Date()
+                }
+            }
+        ))
+        .pipe(gulp.dest('cdn/'));
 });
