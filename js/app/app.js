@@ -2,7 +2,9 @@
  * Created by nkuropatkin on 09.10.15.
  */
 //console.log('init app.js');
-
+/**
+ *
+ */
 require.config({
     // пары "ключ-значение" вашего приложения
     baseUrl: "js/app",
@@ -40,3 +42,14 @@ define(['underscore', 'backbone','jquery'], function(_, Backbone,$) {
     //console.log('myModel:',myModel);
     return myModel;
 });
+
+/**
+ * Represents a book.
+ * @author NickTaporuk
+ * @todo : test
+ * @constructor
+ * @param {string} title - The title of the book.
+ * @param {string} author - The author of the book.
+ */
+function Book(title, author) {
+}

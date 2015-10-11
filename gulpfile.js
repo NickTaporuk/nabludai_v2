@@ -9,6 +9,7 @@ var through     = require('gulp-through');
 var sass        = require('gulp-sass');
 var uncss       = require('gulp-uncss');
 var autoprefixer= require('gulp-autoprefixer');
+var jsdoc = require("gulp-jsdoc");
 
 gulp.task('minify-css', function () {
     return gulp.src('scss/style.scss')
@@ -40,4 +41,16 @@ gulp.task('uncss', function () {
             }
         ))
         .pipe(gulp.dest('cdn/'));
+});
+
+gulp.task('jsdoc',function(){
+    gulp.src("js/app/*.js")
+        .pipe(jsdoc('./doc'))
+        .pipe(notify({
+                message: "Js documentations create : <%= file.relative %> @ <%= options.date %>",
+                templateOptions: {
+                    date: new Date()
+                }
+            }
+        ))
 });
