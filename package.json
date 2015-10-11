@@ -1,0 +1,26 @@
+{
+  "name": "nabludai_v2",
+  "version": "1.0.0",
+  "description": "nabludai_v2 frontend backbone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NickTaporuk/nabludai_v2.git"
+  },
+  "author": "NickTaporuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NickTaporuk/nabludai_v2/issues"
+  },
+  "homepage": "https://github.com/NickTaporuk/nabludai_v2",
+  "devDependencies": {
+    "gulp-concat-css": "^2.2.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-through": "^0.3.0"
+  }
+}
