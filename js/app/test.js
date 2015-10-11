@@ -1,15 +1,15 @@
 /**
  * Created by nkuropatkin on 09.10.15.
  */
-//console.log('init app.js');
+console.log('init test.js');
 
 require.config({
     // пары "ключ-значение" вашего приложения
-    baseUrl: "js/app",
+    baseUrl: "js/",
     // Обычно тот же каталог, в котором находится сценарий верхнего уровня,
     // указанный в атрибуте data-main
     paths: {
-        'underscore'    : 'bower_components/underscore/underscore-min',
+        'underscore'    : 'bower_components/underscore/underscore',
         'backbone'      : 'bower_components/backbone/backbone',
         'jquery'        : 'bower_components/jquery/dist/jquery.min'
     },

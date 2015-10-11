@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <title>Getiss</title>
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <script data-main="js/app/app.js" src="js/app/bower_components/requirejs/require.js"></script>
+    <link rel="stylesheet" href="cdn/getiss.min.css"/>
 </head>
 <body>
 <div id="todo">
 </div>
+<div id="sidebar">segerg</div>
 <script type="text/template" id="item-template">
     <div>
         <input id="todo_complete" type="checkbox" <%= completed ?
         'checked="checked"' : '' %>>
         <%= title %>
     </div>
-</script></body>
+</script>
+<script type="text/javascript" src="cdn/getiss.min.js"></script>
+</body>
 </html>

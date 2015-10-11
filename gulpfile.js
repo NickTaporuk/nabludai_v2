@@ -9,13 +9,25 @@ var through     = require('gulp-through');
 var sass        = require('gulp-sass');
 var uncss       = require('gulp-uncss');
 var autoprefixer= require('gulp-autoprefixer');
-var jsdoc = require("gulp-jsdoc");
+var jsdoc       = require("gulp-jsdoc");
+var uglify      = require('gulp-uglifyjs');
+var refresh     = require('gulp-livereload');
+var lr          = require('tiny-lr');
+var server      = lr();
 
-gulp.task('minify-css', function () {
+gulp.task('default', ['min-css', 'min-js']);
+
+gulp.task('lr-server', function() {
+    server.listen(35729, function(err) {
+        if(err) return console.log(err);
+    });
+});
+
+gulp.task('min-css', function () {
     return gulp.src('scss/style.scss')
         .pipe(sass())
         .pipe(minifyCss({compatibility: 'ie8'}))
-        .pipe(rename("bundle.min.css"))
+        .pipe(rename("getiss.min.css"))
         .pipe(notify({
             message: "Generated file: <%= file.relative %> @ <%= options.date %>",
             templateOptions: {
@@ -53,4 +65,15 @@ gulp.task('jsdoc',function(){
                 }
             }
         ))
+});
+
+gulp.task('min-js', function() {
+    gulp.src([  'js/bower_components/jquery/dist/jquery.js',
+                'js/bower_components/underscore/underscore.js',
+                'js/bower_components/backbone/backbone.js',
+                'js/app/home.js'
+    ])
+        .pipe(uglify())
+        .pipe(rename("getiss.min.js"))
+        .pipe(gulp.dest('cdn/'))
 });
