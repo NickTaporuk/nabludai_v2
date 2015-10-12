@@ -2,10 +2,12 @@
  * Created by nkuropatkin on 09.10.15.
  */
 //console.log('init app.js');
-
+/**
+ *
+ */
 require.config({
     // пары "ключ-значение" вашего приложения
-    baseUrl: "js/app",
+    baseUrl: "js",
     // Обычно тот же каталог, в котором находится сценарий верхнего уровня,
     // указанный в атрибуте data-main
     paths: {
