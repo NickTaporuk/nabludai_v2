@@ -43,7 +43,7 @@ gulp.task('uncss', function () {
     return gulp.src('cdn/bundle.min.css')
         .pipe(uncss({
             //html: ['index.html', 'posts/**/*.html', 'http://example.com']
-            html: ['index.html']
+            html: ['test.html']
         }))
         .pipe(notify({
                 message: "Delete not used css classes , ids, tagse: <%= file.relative %> @ <%= options.date %>",

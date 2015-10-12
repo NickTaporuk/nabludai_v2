@@ -1,0 +1,17 @@
+@mixin test($name) {
+    @if $name == moz {
+      color:red;
+    }
+    @if $name == webkit {
+      color:green;
+    }
+    @if $name == o {
+      color:blue;
+    }
+    @if $name == ms {
+      color:yellow;
+    }
+    @if $name == null {
+      color:black;
+    }
+}

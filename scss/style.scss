@@ -1,7 +1,8 @@
-$blue: #2822be ;
+$blue: #beb812;
 $margin: 16px ;
 
 @import "includes/reset";
+@import "includes/mixin";
 @import "includes/home";
 @import "includes/settings";
 
@@ -9,4 +10,8 @@ $margin: 16px ;
 .content-navigation {
   border-color: $blue;
   color:darken($blue,9%);
+}
+
+.box{
+  @include test(o);
 }
