@@ -55,7 +55,7 @@ gulp.task('uncss', function () {
         .pipe(gulp.dest('cdn/'));
 });
 
-gulp.task('jsdoc',function(){
+gulp.task('jsdoc',function() {
     gulp.src("js/app/*.js")
         .pipe(jsdoc('./doc'))
         .pipe(notify({

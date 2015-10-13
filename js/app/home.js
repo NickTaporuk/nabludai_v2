@@ -1,14 +1,13 @@
 /* start home js*/
 /**
- *@author NickTaporuk
+ *@author NickTaporuk TEsxtajkfba
  * Represents a book.
  * @constructor
  * @param {string} title - The title of the book.
  * @param {string} author - The author of the book.
- * @todo: test
+ * @todo: test web development
  */
-function Book(title, author) {
-}
+function Book(title, author) {}
 
 /** @function
  * @name Todo
