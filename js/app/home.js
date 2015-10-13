@@ -1,20 +1,36 @@
 /* start home js*/
 /**
- *@author NickTaporuk TEsxtajkfba
- * Represents a book.
- * @constructor
- * @param {string} title - The title of the book.
- * @param {string} author - The author of the book.
- * @todo: test web development
- */
-function Book(title, author) {}
-
-/** @function
+ * This is a root model for Todo
+ * @author NickTaporuk
+ * @name module:Todo
+ * @class Todo
+ * @module models/Todo
  * @name Todo
+ * @constructor
+ * @augments Backbone.Model
  */
-var Todo = Backbone.Model.extend({
+var Todo = Backbone.Model.extend(
+    /** @lends module:Todo.prototype */
+    {
+        /** @lends Todo.prototype */
+
+        /**
+         * Generic tap event
+         * @name Todo.onTap
+         * @function
+         * @param defaults
+         */
     defaults: {
+        /**
+         * This collection contains model1s
+         * @memberof! module:Module1.Module1/Collections/Collection2
+         * @type {module:Module1.Module1/Models/Model2}
+         */
         title: '',
+        /**
+         * URL to item list
+         * @memberof! module:Module1.Module1/Collections/Collection2
+         */
         completed: false
     }
 });

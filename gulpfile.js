@@ -14,8 +14,9 @@ var uglify      = require('gulp-uglifyjs');
 var refresh     = require('gulp-livereload');
 var lr          = require('tiny-lr');
 var server      = lr();
+var shell = require('gulp-shell');
 
-gulp.task('default', ['min-css', 'min-js']);
+gulp.task('default', ['min-css', 'min-js','watch']);
 
 gulp.task('lr-server', function() {
     server.listen(35729, function(err) {
@@ -76,4 +77,16 @@ gulp.task('min-js', function() {
         .pipe(uglify())
         .pipe(rename("getiss.min.js"))
         .pipe(gulp.dest('cdn/'))
+});
+
+gulp.task('phpdoc', shell.task(['vendor/bin/phpdoc -d . -t docs/phpdoc -i vendor/,node_modules/,server.php']));
+
+gulp.task('watch', function () {
+/*
+    gulp.watch(['composer.json', 'phpunit.xml', './!**!/!*.php', '!vendor/!**!/!*', '!node_modules/!**!/!*'], function (event) {
+        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    });
+    gulp.watch('composer.json', ['dump-autoload']);
+    gulp.watch(['phpunit.xml', './!**!/!*.php', '!vendor/!**!/!*', '!node_modules/!**!/!*'], ['phplint', 'phpcs', 'phpunit']);
+*/
 });
