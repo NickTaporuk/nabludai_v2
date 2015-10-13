@@ -27,7 +27,8 @@
     "gulp-through": "^0.3.0",
     "gulp-uglifyjs": "^0.6.2",
     "gulp-uncss": "^1.0.4",
-    "gulp-watch": "^4.3.5"
+    "gulp-watch": "^4.3.5",
+    "gulp": "~3.9.0"
   },
   "dependencies": {
     "gulp-browserify": "^0.5.1",
