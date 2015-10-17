@@ -1,22 +1,32 @@
 'use strict';
 
-var gulp        = require('gulp');
-var concatCss   = require('gulp-concat-css');
-var minifyCss   = require('gulp-minify-css');
-var rename      = require("gulp-rename");
-var notify      = require("gulp-notify");
-var through     = require('gulp-through');
-var sass        = require('gulp-sass');
-var uncss       = require('gulp-uncss');
-var autoprefixer= require('gulp-autoprefixer');
-var jsdoc       = require("gulp-jsdoc");
-var uglify      = require('gulp-uglifyjs');
-var refresh     = require('gulp-livereload');
-var lr          = require('tiny-lr');
-var server      = lr();
-var shell = require('gulp-shell');
+var gulp        = require('gulp'),
+ concatCss   = require('gulp-concat-css'),
+ minifyCss   = require('gulp-minify-css'),
+ rename      = require("gulp-rename"),
+ notify      = require("gulp-notify"),
+ through     = require('gulp-through'),
+ sass        = require('gulp-sass'),
+ uncss       = require('gulp-uncss'),
+ autoprefixer= require('gulp-autoprefixer'),
+ jsdoc       = require("gulp-jsdoc"),
+ uglify      = require('gulp-uglifyjs'),
+ refresh     = require('gulp-livereload'),
+ shell       = require('gulp-shell'),
+ svgo        = require('svgo'),
+ lr          = require('tiny-lr'),
+ //svg2png     = require('gulp-svg2png'),
+ //svg_sprite  = require('gulp-svg-sprite'),
+ svgSprite   = require("gulp-svg-sprites"),
+ server      = lr();
 
-gulp.task('default', ['min-css', 'min-js','watch']);
+var plugins = require("gulp-load-plugins")({
+    pattern: ['gulp-*', 'gulp.*'],
+    replaceString: /\bgulp[\-.]/
+ });
+
+
+gulp.task('default', ['min-css', 'min-js']);
 
 gulp.task('lr-server', function() {
     server.listen(35729, function(err) {
@@ -82,6 +92,7 @@ gulp.task('min-js', function() {
 gulp.task('phpdoc', shell.task(['vendor/bin/phpdoc -d . -t docs/phpdoc -i vendor/,node_modules/,server.php']));
 
 gulp.task('watch', function () {
+    gulp.watch(['min-css', 'min-js']);
 /*
     gulp.watch(['composer.json', 'phpunit.xml', './!**!/!*.php', '!vendor/!**!/!*', '!node_modules/!**!/!*'], function (event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -90,3 +101,33 @@ gulp.task('watch', function () {
     gulp.watch(['phpunit.xml', './!**!/!*.php', '!vendor/!**!/!*', '!node_modules/!**!/!*'], ['phplint', 'phpcs', 'phpunit']);
 */
 });
+
+gulp.task('sprites', function () {
+    return gulp.src('img/svg/*.svg')
+        .pipe(svgSprite({
+            cssFile: "../../scss/includes/_sprite.scss",
+            layout: 'diagonal',
+            "render": {
+                "scss": {
+                    "dest": "../../scss/includes/_sprite.scss",
+                        "template": "scss/_sprite.scss"
+                }
+            }
+        }))
+        .pipe(gulp.dest("cdn/svg"))
+        .pipe(notify({
+                message: "SVG sprite  create : <%= file.relative %> @ <%= options.date %>",
+                templateOptions: {
+                    date: new Date()
+                }
+            }
+        ));
+});
+
+gulp.task('pngSprite', ['svgSprite'], function() {
+    return gulp.src(basePaths.dest + paths.sprite.svg)
+        .pipe(plugins.svg2png())
+        .pipe(gulp.dest(paths.images.dest));
+});
+
+gulp.task('sprite', ['pngSprite']);
