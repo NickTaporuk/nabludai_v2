@@ -105,16 +105,15 @@ gulp.task('watch', function () {
 gulp.task('sprites', function () {
     return gulp.src('img/svg/*.svg')
         .pipe(svgSprite({
-            cssFile: "../../scss/includes/_sprite.scss",
-            layout: 'diagonal',
-            "render": {
+            cssFile: "../scss/includes/_sprite.scss",
+            layout: 'diagonal'
+            /*,"render": {
                 "scss": {
-                    "dest": "../../scss/includes/_sprite.scss",
-                        "template": "scss/_sprite.scss"
+                    "dest": "../../includes/_sprite.scss"
                 }
-            }
+            }*/
         }))
-        .pipe(gulp.dest("cdn/svg"))
+        .pipe(gulp.dest("cdn/"))
         .pipe(notify({
                 message: "SVG sprite  create : <%= file.relative %> @ <%= options.date %>",
                 templateOptions: {
