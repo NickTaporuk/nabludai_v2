@@ -1,0 +1,335 @@
+.icon {
+    font-size: 10px;
+}
+
+.icon:before {
+    content:' ';
+    vertical-align:middle;
+    display: inline-block;
+    background-image: url("../svg/sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 190.6em 166.4em;
+}
+
+.no-svg .icon:before {
+    background-image: url("../svg/sprite.png");
+}
+
+.icon.agreement-40_40:before {
+    background-position: 0em 0em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.arrowsmall-blue_20-12:before {
+    background-position: -4em -4em;
+    width: 2em;
+    height: 1.2em;
+}
+
+.icon.arrowsmall-green_10-16:before {
+    background-position: -6em -5.2em;
+    width: 1em;
+    height: 1.6em;
+}
+
+.icon.arrowsmall-green_20-12:before {
+    background-position: -7em -6.8em;
+    width: 2em;
+    height: 1.2em;
+}
+
+.icon.arrowsmall-grey_20-12:before {
+    background-position: -9em -8em;
+    width: 2em;
+    height: 1.2em;
+}
+
+.icon.arrowsmall-lightgrey_20-12:before {
+    background-position: -11em -9.2em;
+    width: 2em;
+    height: 1.2em;
+}
+
+.icon.arrowsmall-white_10-16:before {
+    background-position: -13em -10.4em;
+    width: 1em;
+    height: 1.6em;
+}
+
+.icon.arrowsmall_26-26:before {
+    background-position: -14em -12em;
+    width: 2.6em;
+    height: 2.6em;
+}
+
+.icon.badges_40-40:before {
+    background-position: -16.6em -14.6em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.bag_30-30:before {
+    background-position: -20.6em -18.6em;
+    width: 3em;
+    height: 3em;
+}
+
+.icon.bag_40-40:before {
+    background-position: -23.6em -21.6em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.books_40-40:before {
+    background-position: -27.6em -25.6em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.checker-white_30-30:before {
+    background-position: -31.6em -29.6em;
+    width: 3em;
+    height: 3em;
+}
+
+.icon.checker_30-30:before {
+    background-position: -34.6em -32.6em;
+    width: 3em;
+    height: 3em;
+}
+
+.icon.checkmark_20-20:before {
+    background-position: -37.6em -35.6em;
+    width: 2em;
+    height: 2em;
+}
+
+.icon.clock-dark_18-18:before {
+    background-position: -39.6em -37.6em;
+    width: 1.8em;
+    height: 1.8em;
+}
+
+.icon.clock_18-18:before {
+    background-position: -41.4em -39.4em;
+    width: 1.8em;
+    height: 1.8em;
+}
+
+.icon.clock_40-40:before {
+    background-position: -43.2em -41.2em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.close_20-20:before {
+    background-position: -47.2em -45.2em;
+    width: 2em;
+    height: 2em;
+}
+
+.icon.credir-cards_245-30:before {
+    background-position: -49.2em -47.2em;
+    width: 24.5em;
+    height: 3em;
+}
+
+.icon.cups_40-40:before {
+    background-position: -73.7em -50.2em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.email_16-12:before {
+    background-position: -77.7em -54.2em;
+    width: 1.6em;
+    height: 1.2em;
+}
+
+.icon.format-icon1_40-40:before {
+    background-position: -79.3em -55.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.format-icon2_40-40:before {
+    background-position: -83.3em -59.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.format-icon31_40-40:before {
+    background-position: -87.3em -63.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.format-icon3_40-40:before {
+    background-position: -91.3em -67.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.format-icon4_40-40:before {
+    background-position: -95.3em -71.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.format-icon5_40-40:before {
+    background-position: -99.3em -75.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.format-icon6_40-40:before {
+    background-position: -103.3em -79.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.format-icon7_40-40:before {
+    background-position: -107.3em -83.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.garbage_24-30:before {
+    background-position: -111.3em -87.4em;
+    width: 2.4em;
+    height: 3em;
+}
+
+.icon.mark_40-40:before {
+    background-position: -113.7em -90.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.marks_35-30:before {
+    background-position: -117.7em -94.4em;
+    width: 3.5em;
+    height: 3em;
+}
+
+.icon.messages-white_30-26:before {
+    background-position: -121.2em -97.4em;
+    width: 3em;
+    height: 2.6em;
+}
+
+.icon.messages_30-26:before {
+    background-position: -124.2em -100em;
+    width: 3em;
+    height: 2.6em;
+}
+
+.icon.padlock_40-40:before {
+    background-position: -127.2em -102.6em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.pages-40_40:before {
+    background-position: -131.2em -106.6em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.price-color_40-40:before {
+    background-position: -135.2em -110.6em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.price-white_40-40:before {
+    background-position: -139.2em -114.6em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.profile-big_50-50:before {
+    background-position: -143.2em -118.6em;
+    width: 5em;
+    height: 5em;
+}
+
+.icon.profile-hover_24-24:before {
+    background-position: -148.2em -123.6em;
+    width: 2.4em;
+    height: 2.4em;
+}
+
+.icon.profile_24-24:before {
+    background-position: -150.6em -126em;
+    width: 2.4em;
+    height: 2.4em;
+}
+
+.icon.samples-color_40-40:before {
+    background-position: -153em -128.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.smartphones_10-16:before {
+    background-position: -157em -132.4em;
+    width: 1em;
+    height: 1.6em;
+}
+
+.icon.targets-color_40-40:before {
+    background-position: -158em -134em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.targets-white_40-40:before {
+    background-position: -162em -138em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.timer_40-40:before {
+    background-position: -166em -142em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.totop_30-18:before {
+    background-position: -170em -146em;
+    width: 3em;
+    height: 1.8em;
+}
+
+.icon.userbox-hover_40-45:before {
+    background-position: -173em -147.8em;
+    width: 4em;
+    height: 4.5em;
+}
+
+.icon.userbox_40-45:before {
+    background-position: -177em -152.3em;
+    width: 4em;
+    height: 4.5em;
+}
+
+.icon.zoom-color_16-16:before {
+    background-position: -181em -156.8em;
+    width: 1.6em;
+    height: 1.6em;
+}
+
+.icon.zoom-color_40-40:before {
+    background-position: -182.6em -158.4em;
+    width: 4em;
+    height: 4em;
+}
+
+.icon.zoom-white_40-40:before {
+    background-position: -186.6em -162.4em;
+    width: 4em;
+    height: 4em;
+}
+
