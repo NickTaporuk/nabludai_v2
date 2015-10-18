@@ -1,39 +1,60 @@
 'use strict';
 
-var gulp        = require('gulp'),
- concatCss   = require('gulp-concat-css'),
- minifyCss   = require('gulp-minify-css'),
- rename      = require("gulp-rename"),
- notify      = require("gulp-notify"),
- through     = require('gulp-through'),
- sass        = require('gulp-sass'),
- uncss       = require('gulp-uncss'),
- autoprefixer= require('gulp-autoprefixer'),
- jsdoc       = require("gulp-jsdoc"),
- uglify      = require('gulp-uglifyjs'),
- refresh     = require('gulp-livereload'),
- shell       = require('gulp-shell'),
- svgo        = require('svgo'),
- lr          = require('tiny-lr'),
- //svg2png     = require('gulp-svg2png'),
- //svg_sprite  = require('gulp-svg-sprite'),
- svgSprite   = require("gulp-svg-sprites"),
- server      = lr();
+/**/
+/*
+var config = {
+    host: '192.168.0.21',
+    port: 22,
+    username: 'iojs',
+    privateKey: fs.readFileSync('/Users/zensh/.ssh/id_rsa')
+};
+*/
 
+var gulp        = require('gulp'),
+    concatCss   = require('gulp-concat-css'),
+    minifyCss   = require('gulp-minify-css'),
+    rename      = require("gulp-rename"),
+    notify      = require("gulp-notify"),
+    through     = require('gulp-through'),
+    sass        = require('gulp-sass'),
+    uncss       = require('gulp-uncss'),
+    autoprefixer= require('gulp-autoprefixer'),
+    jsdoc       = require("gulp-jsdoc"),
+    uglify      = require('gulp-uglifyjs'),
+    refresh     = require('gulp-livereload'),
+    shell       = require('gulp-shell'),
+    svgo        = require('svgo'),
+    lr          = require('tiny-lr'),
+    svgSprite   = require("gulp-svg-sprites"),
+    GulpSSH     = require('gulp-ssh'),
+/*
+    gulpSSH     = new GulpSSH({
+        ignoreErrors: false,
+        sshConfig: config
+    }),
+*/
+    server      = lr();
+
+/**/
+/*
 var plugins = require("gulp-load-plugins")({
     pattern: ['gulp-*', 'gulp.*'],
     replaceString: /\bgulp[\-.]/
  });
+*/
 
 
+/**/
 gulp.task('default', ['min-css', 'min-js']);
 
+/**/
 gulp.task('lr-server', function() {
     server.listen(35729, function(err) {
         if(err) return console.log(err);
     });
 });
 
+/**/
 gulp.task('min-css', function () {
     return gulp.src('scss/style.scss')
         .pipe(sass())
@@ -50,6 +71,7 @@ gulp.task('min-css', function () {
 });
 
 // delete not used css classes , ids, tags
+/**/
 gulp.task('uncss', function () {
     return gulp.src('cdn/bundle.min.css')
         .pipe(uncss({
@@ -66,6 +88,7 @@ gulp.task('uncss', function () {
         .pipe(gulp.dest('cdn/'));
 });
 
+/**/
 gulp.task('jsdoc',function() {
     gulp.src("js/app/*.js")
         .pipe(jsdoc('./doc'))
@@ -78,10 +101,12 @@ gulp.task('jsdoc',function() {
         ))
 });
 
+/**/
 gulp.task('min-js', function() {
     gulp.src([  'js/bower_components/jquery/dist/jquery.js',
                 'js/bower_components/underscore/underscore.js',
                 'js/bower_components/backbone/backbone.js',
+                'js/bower_components/backbone-localstorage/backbone-localstorage.js',
                 'js/app/home.js'
     ])
         .pipe(uglify())
@@ -89,8 +114,10 @@ gulp.task('min-js', function() {
         .pipe(gulp.dest('cdn/'))
 });
 
+/**/
 gulp.task('phpdoc', shell.task(['vendor/bin/phpdoc -d . -t docs/phpdoc -i vendor/,node_modules/,server.php']));
 
+/**/
 gulp.task('watch', function () {
     gulp.watch(['min-css', 'min-js']);
 /*
@@ -102,16 +129,12 @@ gulp.task('watch', function () {
 */
 });
 
+/**/
 gulp.task('sprites', function () {
     return gulp.src('img/svg/*.svg')
         .pipe(svgSprite({
             cssFile: "../scss/includes/_sprite.scss",
             layout: 'diagonal'
-            /*,"render": {
-                "scss": {
-                    "dest": "../../includes/_sprite.scss"
-                }
-            }*/
         }))
         .pipe(gulp.dest("cdn/"))
         .pipe(notify({
@@ -123,10 +146,19 @@ gulp.task('sprites', function () {
         ));
 });
 
+/**/
 gulp.task('pngSprite', ['svgSprite'], function() {
     return gulp.src(basePaths.dest + paths.sprite.svg)
         .pipe(plugins.svg2png())
         .pipe(gulp.dest(paths.images.dest));
 });
 
+/**/
 gulp.task('sprite', ['pngSprite']);
+
+/**/
+gulp.task('exec', function () {
+    return gulpSSH
+        .exec(['uptime', 'ls -a', 'pwd'], {filePath: 'commands.log'})
+        .pipe(gulp.dest('logs'))
+});
