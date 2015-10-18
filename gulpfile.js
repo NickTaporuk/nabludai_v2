@@ -107,7 +107,10 @@ gulp.task('min-js', function() {
                 'js/bower_components/underscore/underscore.js',
                 'js/bower_components/backbone/backbone.js',
                 'js/bower_components/backbone-localstorage/backbone-localstorage.js',
-                'js/app/home.js'
+                'js/app/collections/*.js',  //  collections backbone
+                'js/app/models/*.js',       //  models
+                'js/app/views',             //  views
+                'js/app/app.js'             //  init
     ])
         .pipe(uglify())
         .pipe(rename("getiss.min.js"))
