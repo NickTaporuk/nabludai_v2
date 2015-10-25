@@ -289,3 +289,24 @@ var isValid = KJUR.jws.JWS.verifyJWT("eyT...", "616161",
         'mailto:kate@foo.com'],
         aud: ['http://foo.com/employee',
         'http://foo.com/partner']});
+
+//HTTP/1.1 401 Unauthorized
+//WWW-Authenticate: Bearer realm="DefaultRealm"
+
+/*
+* HTTP/1.1 400 Bad Request
+ WWW-Authenticate: Bearer realm="DefaultRealm",
+ error="invalid_request",
+ error_description="Unable to find token in the message."
+* */
+
+/*
+* HTTP/1.1 403 Forbidden
+ WWW-Authenticate: Bearer realm="DefaultRealm",
+ error="insufficient_scope",
+ error_description="scope(s) associated with access token are not valid to access
+ this resource.",
+ scope="Scopes must match Any of these scopes:resource.WRITE"
+* */
+ //backbone add header authorization
+//MyCollection.fetch( { headers: {'Authorization' :'Basic USERNAME:PASSWORD'} } );
