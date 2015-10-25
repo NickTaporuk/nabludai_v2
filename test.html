@@ -2,31 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Getiss</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <title>Collapsing Header Effect</title>
     <link rel="stylesheet" href="cdn/getiss.min.css"/>
 </head>
 <body>
-<div id="todo">
-</div>
-<div id="sidebar">segerg</div>
 
+<div class="icon arrowsmall-blue_20-12"></div>
+<div class="icon arrowsmall-grey_20-12"></div>
+<div class="icon badges_40-40"></div>
 <div id="todo">
     <input type='checkbox' />
 </div>
-
-<div class="icon format-icon1_40-40"></div>
-<div class="icon arrowsmall-grey_20-12"></div>
-<div class="icon badges_40-40"></div>
-<div class="icon books_40-40"></div>
-
-<script type="text/template" id="item-template">
-    <div>
-        <input id="todo_complete" type="checkbox" <%= completed ?
-        'checked="checked"' : '' %>>
-        <%= title %>
-    </div>
-</script>
-<script type="text/javascript" src="cdn/getiss.min.js"></script>
+<script src="cdn/getiss.min.js"></script>
 </body>
 </html>

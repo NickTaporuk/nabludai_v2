@@ -33,6 +33,7 @@ var gulp        = require('gulp'),
         sshConfig: config
     }),
 */
+    yaml = require('gulp-yaml'),
     server      = lr();
 
 /**/
@@ -106,15 +107,23 @@ gulp.task('min-js', function() {
     gulp.src([  'js/bower_components/jquery/dist/jquery.js',
                 'js/bower_components/underscore/underscore.js',
                 'js/bower_components/backbone/backbone.js',
-                'js/bower_components/backbone-localstorage/backbone-localstorage.js',
-                'js/app/collections/*.js',  //  collections backbone
-                'js/app/models/*.js',       //  models
-                'js/app/views',             //  views
-                'js/app/app.js'             //  init
+                //'js/bower_components/backbone-localstorage/backbone-localstorage.js',
+                //'js/app/collections/*.js',  //  collections backbone
+                //'js/app/models/*.js',       //  models
+                //'js/app/views',             //  views
+                'js/bower_components/kjur/jsrsasign/jsrsasign-latest-all-min.js',
+                //'js/app/app.js'             //  init
     ])
         .pipe(uglify())
         .pipe(rename("getiss.min.js"))
         .pipe(gulp.dest('cdn/'))
+        .pipe(notify({
+                message: "Generated file: <%= file.relative %> @ <%= options.date %>",
+                templateOptions: {
+                    date: new Date()
+                }
+            }
+        ))
 });
 
 /**/
@@ -123,16 +132,8 @@ gulp.task('phpdoc', shell.task(['vendor/bin/phpdoc -d . -t docs/phpdoc -i vendor
 /**/
 gulp.task('watch', function () {
     gulp.watch(['min-css', 'min-js']);
-/*
-    gulp.watch(['composer.json', 'phpunit.xml', './!**!/!*.php', '!vendor/!**!/!*', '!node_modules/!**!/!*'], function (event) {
-        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-    });
-    gulp.watch('composer.json', ['dump-autoload']);
-    gulp.watch(['phpunit.xml', './!**!/!*.php', '!vendor/!**!/!*', '!node_modules/!**!/!*'], ['phplint', 'phpcs', 'phpunit']);
-*/
 });
 
-/**/
 gulp.task('sprites', function () {
     return gulp.src('img/svg/*.svg')
         .pipe(svgSprite({
@@ -164,4 +165,10 @@ gulp.task('exec', function () {
     return gulpSSH
         .exec(['uptime', 'ls -a', 'pwd'], {filePath: 'commands.log'})
         .pipe(gulp.dest('logs'))
+});
+/**/
+gulp.task('yml', function () {
+    return gulp.src('/var/www/phalcon/app/config/*.yml')
+        .pipe(yaml({ space: 2 }))
+        .pipe(gulp.dest('./json/'))
 });

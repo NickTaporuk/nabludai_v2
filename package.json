@@ -36,7 +36,8 @@
     "gulp-uglifyjs": "^0.6.2",
     "gulp-uncss": "^1.0.4",
     "gulp-util": "^3.0.6",
-    "gulp-watch": "^4.3.5"
+    "gulp-watch": "^4.3.5",
+    "gulp-yaml": "^1.0.1"
   },
   "dependencies": {
     "gulp-browserify": "^0.5.1",

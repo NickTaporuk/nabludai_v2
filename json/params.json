@@ -1,0 +1,7 @@
+[
+  {
+    "application": "kernel",
+    "version": "2.15.3",
+    "path": "/usr/local/lib/erlang/lib/kernel-2.15.3"
+  }
+]
