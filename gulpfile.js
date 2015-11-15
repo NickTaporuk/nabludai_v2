@@ -26,6 +26,7 @@ var gulp        = require('gulp'),
     svgo        = require('svgo'),
     lr          = require('tiny-lr'),
     svgSprite   = require("gulp-svg-sprites"),
+    jade        = require('gulp-jade'),
     GulpSSH     = require('gulp-ssh'),
 /*
     gulpSSH     = new GulpSSH({
@@ -112,7 +113,7 @@ gulp.task('min-js', function() {
                 //'js/app/models/*.js',       //  models
                 //'js/app/views',             //  views
                 'js/bower_components/kjur/jsrsasign/jsrsasign-latest-all-min.js',
-                //'js/app/app.js'             //  init
+                'js/app/app.js'             //  init
     ])
         .pipe(uglify())
         .pipe(rename("getiss.min.js"))
@@ -171,4 +172,16 @@ gulp.task('yml', function () {
     return gulp.src('/var/www/phalcon/app/config/*.yml')
         .pipe(yaml({ space: 2 }))
         .pipe(gulp.dest('./json/'))
+});
+
+// Jade
+gulp.task('jade', function(){
+    gulp.src('./template/*.jade')
+        .pipe(jade())
+        .pipe(gulp.dest('./dist/'))
+});
+
+// Watch
+gulp.task('watch', function(){
+    gulp.watch('./template/*.jade',['jade']);
 });

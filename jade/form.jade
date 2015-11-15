@@ -1,0 +1,34 @@
+// Form Mixin
+mixin form
+    .module.form-module
+        .toggle
+            i.login Login
+            i.signin Sign in
+        .form
+            h2 Login to your account
+            form.log-in
+                input(type='text' placeholder='Username')
+                input(type='password' placeholder='Password')
+                button Login
+        .form.sign-in
+            h2 Create an account
+            form
+                input(type='text' placeholder='Username')
+                input(type='password' placeholder='Password')
+                input(type='email' placeholder='Email Address')
+                input(type='tel' placeholder='Phone Number')
+                button Register
+        .cta
+            a(href='https://getiss.com') Forgot your password?
+// Input Mixin
+mixin input(type, placeholder)
+    input(type=type
+    placeholder=placeholder)
+// Button Mixin
+mixin button(value)
+    button=value
+// Pen Title
+.pen-titl
+    span
+// Form Module
++form
